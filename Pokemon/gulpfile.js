@@ -7,12 +7,12 @@ var uglifycss = require('gulp-uglifycss');
 gulp.task('scripts', function() {
   return gulp.src('src/scripts/*.js')
     .pipe(concat('script.main.js'))
-    .pipe(uglify())
     .pipe(gulp.dest('dist/scripts/'))
 });
 
 gulp.task('css', function() {
-  return gulp.src('src/styles/main.scss')
+  return gulp.src('src/styles/*.css')
+    .pipe(concat('styles.main.css'))
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
@@ -25,10 +25,15 @@ gulp.task('html', function() {
       .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('fonts', function() {
+   return gulp.src('src/fonts/**')
+      .pipe(gulp.dest('dist/fonts'));
+});
+
 gulp.task('watch', function() {
    gulp.watch('src/scripts/**/*.js', ['scripts']);
    gulp.watch('src/styles/**/*.css', ['css']);
    gulp.watch('src/*.html', ['html']);
 });
 
-gulp.task('default', ['css', 'scripts', 'html']);
+gulp.task('default', ['css', 'scripts', 'html', 'fonts']);

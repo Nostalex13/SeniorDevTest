@@ -1,0 +1,83 @@
+/*          Page properties          */
+
+.page-wrapper {
+   height: 500px;
+
+   text-align: center;
+}
+
+/*          Pokemon window          */
+
+.pokemon {
+   height: 100%;
+
+   text-align: center;
+}
+
+.pokemon::before {
+   content: '';
+   display: inline-block;
+   height: 100%;
+
+   vertical-align: middle;
+}
+
+.pokemon__caption {
+   margin: 10px 0;
+
+   font-size: 20px;
+   font-family: 'RobotoL', sans-serif;
+   font-weight: bold;
+}
+
+.pokemon__form {
+   display: inline-block;
+   position: relative;
+   width: 200px;
+
+   vertical-align: middle;
+}
+
+.pokemon__input {
+   height: 30px;
+   width: 100%;
+   padding-left: 5px;
+
+   line-height: 20px;
+   font-size: 14px;
+   font-family: 'RobotoL', sans-serif;
+
+   border: 1px solid #77BBBF;
+   border-radius: 3px;
+
+   box-sizing: border-box;
+}
+
+.drop-down {
+   display: none;
+   position: absolute;
+   left: 0;
+   width: 100%;
+
+   border: 1px solid #77BBBF;
+   border-radius: 3px;
+
+   box-shadow: 3px 2px 5px rgba(33, 128, 105, .4);
+
+   list-style: none;
+   box-sizing: border-box;
+}
+
+.drop-down__item {
+   padding: 5px 0;
+
+   font-size: 16px;
+   font-family: 'RobotoL', sans-serif;
+
+   transition: .2s;
+}
+
+.drop-down__item:hover {
+   cursor: pointer;
+   background-color: #6CDADA;
+}
