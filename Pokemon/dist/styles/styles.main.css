@@ -2,11 +2,11 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 a,input,button{outline:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
 body{line-height:1}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
 table{border-collapse:collapse;border-spacing:0}a{color:#000;text-decoration:none}
-.page-wrapper{height:500px;text-align:center}.pokemon{height:100%;text-align:center}
+.page-wrapper{height:500px;min-width:300px;text-align:center}.pokemon{height:100%;text-align:center}
 .pokemon::before{content:'';display:inline-block;height:100%;vertical-align:middle}
 .pokemon__caption{margin:10px 0;font-size:20px;font-family:'RobotoL',sans-serif;font-weight:bold}
 .pokemon__form{display:inline-block;position:relative;width:200px;vertical-align:middle}
 .pokemon__input{height:30px;width:100%;padding-left:5px;line-height:20px;font-size:14px;font-family:'RobotoL',sans-serif;border:1px solid #77bbbf;border-radius:3px;box-sizing:border-box}
-.drop-down{display:none;position:absolute;left:0;width:100%;border:1px solid #77bbbf;border-radius:3px;box-shadow:3px 2px 5px rgba(33,128,105,.4);list-style:none;box-sizing:border-box}
-.drop-down__item{padding:5px 0;font-size:16px;font-family:'RobotoL',sans-serif;transition:.2s}
-.drop-down__item:hover{cursor:pointer;background-color:#6cdada}
+.pokemon__drop-down{display:none;position:absolute;left:0;width:100%;border:1px solid #77bbbf;border-radius:3px;box-shadow:3px 2px 5px rgba(33,128,105,.4);list-style:none;box-sizing:border-box}
+.pokemon__drop-down__item{padding:5px 0;font-size:16px;font-family:'RobotoL',sans-serif;transition:.2s}
+.pokemon__drop-down__item:hover{cursor:pointer;background-color:#6cdada}.pokemon__drop-down__item--active{cursor:pointer;background-color:#6cdada}
