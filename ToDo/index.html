@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+
+   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+   <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+   <!-- App -->
+   <script type="text/x-handlebars" data-template-name="application">
+      <div class="page-wrapper">
+         <div class="todo-wrapper">
+            <section class="toDo">
+               {{input class="toDo__new" value=inputName type="text" action="createItem"
+               placeholder="What to do today?"}}
+               <ul class="toDo__list">
+                  {{outlet}}
+               </ul>
+               <footer class="toDo__footer">
+                  <a class="toDo__clear" onclick={{action "clearCompleted"}}>Clear completed tasks</a>
+                  <span class="toDo__counter"><b>1</b> tasks left</span>
+               </footer>
+            </section>
+         </div>
+      </div>
+   </script>
+
+   <!-- Single task -->
+   <script type="text/x-handlebars" data-template-name="task">
+      {{#each task in controller}}
+      <li class="toDo__item">
+         <input class="toDo__toggle" type="checkbox">
+         <label>{{task.description}}</label>
+         <button class="toDo__remove" {{action "removeItem" task}}>
+      </li>
+      {{/each}}
+   </script>
+
+   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js"></script>
+   <script src="http://builds.emberjs.com/tags/v1.8.0/ember.prod.js"></script>
+   <script src="http://builds.emberjs.com/tags/v1.0.0-beta.11/ember-data.prod.js"></script>
+
+   <script src="js/app/app.js"></script>
+   <script src="js/app/router.js"></script>
+
+   <script src="js/app/models/task.js"></script>
+
+   <script src="js/app/routes/task-route.js"></script>
+
+   <script src="js/app/controllers/app-controller.js"></script>
+   <script src="js/app/controllers/task-controller.js"></script>
+</body>
+</html>
