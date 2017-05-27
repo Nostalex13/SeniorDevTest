@@ -100,7 +100,7 @@ window.onload = function() {
 
          for(let i = 0; i < data.length; i++) {
             let obj = document.createElement('li');
-            obj.classList.add('pokemon__drop-down__item');
+            obj.classList.add('pokemon__item');
             obj.innerText = data[i];
 
             dropDown.appendChild(obj);
@@ -121,6 +121,11 @@ window.onload = function() {
 
    function PokemonHandlers() {
       let display = new PokemonDisplay();
+      let buttons = {
+         down: 40,
+         up: 38,
+         enter: 13
+      };
 
       /*          Input handlers         */
 
@@ -135,18 +140,18 @@ window.onload = function() {
       /*          Arrows control          */
 
       document.querySelector('.pokemon__input').addEventListener('keydown', function(e) {
-         if (e.keyCode == 40) {     // Down arrow
+         if (e.keyCode == buttons.down) {
             e.preventDefault();
             let dropDown = document.querySelector('.pokemon__drop-down');
             let nextChild = dropDown.firstChild;
 
             if (nextChild) {
                while (nextChild) {
-                  if (nextChild.classList.contains('pokemon__drop-down__item--active')) {
+                  if (nextChild.classList.contains('pokemon__item--active')) {
                      if (nextChild != dropDown.lastChild) {
-                        nextChild.classList.remove('pokemon__drop-down__item--active');
+                        nextChild.classList.remove('pokemon__item--active');
                         nextChild = nextChild.nextSibling;
-                        nextChild.classList.add('pokemon__drop-down__item--active');
+                        nextChild.classList.add('pokemon__item--active');
                      }
 
                      return;
@@ -155,22 +160,22 @@ window.onload = function() {
                   }
                }
 
-               dropDown.firstChild.classList.add('pokemon__drop-down__item--active');
+               dropDown.firstChild.classList.add('pokemon__item--active');
             }
          }
 
-         if (e.keyCode == 38) {     // Up arrow
+         if (e.keyCode == buttons.up) {
             e.preventDefault();
             let dropDown = document.querySelector('.pokemon__drop-down');
             let nextChild = dropDown.firstChild;
 
             if (nextChild) {
                while (nextChild) {
-                  if (nextChild.classList.contains('pokemon__drop-down__item--active')) {
+                  if (nextChild.classList.contains('pokemon__item--active')) {
                      if (nextChild != dropDown.firstChild) {
-                        nextChild.classList.remove('pokemon__drop-down__item--active');
+                        nextChild.classList.remove('pokemon__item--active');
                         nextChild = nextChild.previousSibling;
-                        nextChild.classList.add('pokemon__drop-down__item--active');
+                        nextChild.classList.add('pokemon__item--active');
                      }
 
                      return;
@@ -179,7 +184,7 @@ window.onload = function() {
                   }
                }
 
-               dropDown.firstChild.classList.add('pokemon__drop-down__item--active');
+               dropDown.firstChild.classList.add('pokemon__item--active');
             }
          }
       });
@@ -187,12 +192,12 @@ window.onload = function() {
       /*          Enter btn pokemon selection          */
 
       document.querySelector('.pokemon__input').addEventListener('keydown', function(e) {
-         if (e.keyCode == 13) {
+         if (e.keyCode == buttons.enter) {
             let dropDown = document.querySelector('.pokemon__drop-down');
             let nextChild = dropDown.firstChild;
 
             while (nextChild) {
-               if (nextChild.classList.contains('pokemon__drop-down__item--active')) {
+               if (nextChild.classList.contains('pokemon__item--active')) {
                   document.querySelector('.pokemon__input').value = nextChild.innerText;
                   display.clearList();
 

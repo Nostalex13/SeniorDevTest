@@ -5,7 +5,6 @@ var uglifycss = require('gulp-uglifycss');
 
 gulp.task('scripts', function() {
   return gulp.src('src/scripts/*.js')
-   //  .pipe(concat('script.main.js'))
     .pipe(gulp.dest('dist/scripts/'))
 });
 
