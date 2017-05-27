@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
+   <title> toDo </title>
 
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -22,10 +22,6 @@
                <ul class="toDo__list">
                   {{outlet}}
                </ul>
-               <footer class="toDo__footer">
-                  <a class="toDo__clear" onclick={{action "clearCompleted"}}>Clear completed tasks</a>
-                  <span class="toDo__counter"><b>1</b> tasks left</span>
-               </footer>
             </section>
          </div>
       </div>
@@ -34,12 +30,29 @@
    <!-- Single task -->
    <script type="text/x-handlebars" data-template-name="task">
       {{#each task in controller}}
-      <li class="toDo__item">
-         <input class="toDo__toggle" type="checkbox">
-         <label>{{task.description}}</label>
-         <button class="toDo__remove" {{action "removeItem" task}}>
+      <li class="toDo__wrapper" {{action "showRemoveBtn" task on="mouseEnter"}}>
+         <div class="toDo__item" {{action "hideRemoveBtn" task on="mouseLeave"}}>
+            {{#if task.isEditing}}
+               <form {{action "edited" task on="submit"}}>
+                  {{input class="toDo__edit" type="text" value=task.description}}
+               </form>
+            {{else}}
+               {{input class="toDo__toggle" type="checkbox" checked=task.completed}}
+               {{#if task.completed}}
+                  <label class="toDo__editing" {{action "editTask" task on="doubleClick"}}><strike>{{task.description}}</strike></label>
+               {{else}}
+                  <label class="toDo__editing" {{action "editTask" task on="doubleClick"}}>{{task.description}}</label>
+               {{/if}}
+               {{#if task.hiddenBtn}}
+                  <button class="toDo__remove" {{action "removeItem" task}}>
+               {{else}}
+                  <button class="toDo__remove toDo__remove--hidden">
+               {{/if}}
+            {{/if}}
+         </div>
       </li>
       {{/each}}
+      <span class="toDo__counter"><b>{{controller.completed.length}}</b> tasks left</span>
    </script>
 
    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>

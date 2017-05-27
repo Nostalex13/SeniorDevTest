@@ -6,10 +6,6 @@ App.ApplicationController = Ember.Controller.extend({
                completed: false
          });
          this.set('inputName', '');
-      },
-
-      clearCompleted() {
-         console.log('cleared');
       }
    }
 });
