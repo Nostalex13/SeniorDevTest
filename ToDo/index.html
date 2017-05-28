@@ -34,7 +34,7 @@
          <div class="toDo__item" {{action "hideRemoveBtn" task on="mouseLeave"}}>
             {{#if task.isEditing}}
                <form {{action "edited" task on="submit"}}>
-                  {{input class="toDo__edit" type="text" value=task.description}}
+                  {{input class="toDo__edit" type="text" value=task.description autofocus="true"}}
                </form>
             {{else}}
                {{input class="toDo__toggle" type="checkbox" checked=task.completed}}
